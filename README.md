@@ -14,7 +14,6 @@ This repository contains the code to setup the final evaluation of the course "[
 - Submit your own code on the departmental computers for the tournament (see below). See the file `submission_example_rllib.py` for an example.
 
 
-
 ## Use on departmental computers
 
 The departmental computers will be used to run a tournament and submit your implementation (see detailed instructions below). You can also use these computers to train your agents. A tutorial to connect remotely via SSH can be found [here](ssh.md) and additional info is available on [the departmental web pages](https://system.cs.kuleuven.be/cs/system/wegwijs/computerklas/index-E.shtml).
@@ -33,9 +32,8 @@ PyGame, PettingZoo and other packages that you can use are pre-installed in a vi
 source /cw/lvs/NoCsBack/vakken/H0T25A/ml-project/venv/bin/activate
 ```
 
-Since this virtual environment will be used to run the tournament, you should avoid language features that are not compatible with the installed Python version (3.12) or use packages that are not installed. All of PettingZoo's [butterfly](https://pettingzoo.farama.org/content/basic_usage/) dependencies are currently installed, as well as `torch==2.6.0` and `tensorflow==2.18.0`.
+Since this virtual environment will be used to run the tournament, you should avoid language features that are not compatible with the installed Python version (3.12) or use packages that are not installed. All of PettingZoo's [butterfly](https://pettingzoo.farama.org/content/basic_usage/) dependencies are currently installed, as well as `torch==2.10.0` and `tensorflow==2.20.0`.
 
-**Important Note**:The latest release of `pettingzoo` on PyPI does not yet support Python 3.12. To use PettingZoo with Python 3.12, you will need to install the development version directly from the GitHub repository using the following command: `python -m pip install git+https://github.com/Farama-Foundation/PettingZoo.git`.
 
 ## Local installation
 
@@ -60,21 +58,21 @@ Since this virtual environment will be used to run the tournament, you should av
     pip install 'ray[rllib]'
     ```
 
-- All dependencies are also listed in the `requirements.txt` file (`pip install -r requirements.txt`). Or in the`pyproject.toml` file if you want to use `uv`.
+- All dependencies are also listed in the `requirements.txt` file (`pip install -r requirements.txt`). Or in the `pyproject.toml` file if you want to use `uv`.
 
 You can (visually) test your installation by running:
 
 ```
-    python3 evaluation.py -l random_agent.py -s --distortion=5
+python3 evaluation.py -l random_agent.py -s --distortion=5
 ```
 
 
 ## Zombie detection
 
-An unseen test set of observations will be given to your agent. Your agent should return the bounding boxes of all the zombies it has found. Based on interstion over union, the average precision is computed. You can test the setup with an example data file in the `observation_data` folder and running:
+An unseen test set of observations will be given to your agent. Your agent should return the bounding boxes of all the zombies it has found. Based on intersection over union, the average precision is computed. You can test the setup with an example data file in the `observation_data` folder and running:
 
 ```
-    python3 evaluation.py -l random_agent.py --zombies
+python3 evaluation.py -l random_agent.py --zombies
 ```
 
 
@@ -120,22 +118,15 @@ Submit a Github pull request.
 
 ### Installation cannot find Tensorflow
 
-Tensorflow is only compatible with Python 3.9--3.12.
+Tensorflow is only compatible with Python 3.9‒3.12.
 
 On macOS you can use an older Python version by running these commands before the install script:
 
 ```
-brew install python@3.10  # if using homebrew
-virtualenv -p /usr/local/opt/python@3.10/bin/python3 venv
+brew install python@3.12  # if using homebrew
+virtualenv -p /usr/local/opt/python@3.12/bin/python3 venv
 . ./venv/bin/activate
 ```
-
-### Tensorflow / PyTorch does not work on Apple Silicon
-
-When using macOS on M1/M2 Apple Silicon, you might need to use the custom packages provided by Apple:
-
-- https://developer.apple.com/metal/pytorch/
-- https://developer.apple.com/metal/tensorflow-plugin/
 
 ### Getting error during the installation of the requirements
 
