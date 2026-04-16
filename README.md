@@ -21,8 +21,10 @@ The departmental computers will be used to run a tournament and submit your impl
 You will see a personal directory in:
 
 ```
-/cw/lvs/NoCsBack/vakken/H0T25A/ml-project
+/cw/lvs/NoCsBack/vakken/H0T25A/ml-project/students/r1234567
 ```
+
+*Note:* You do not have permission to view other students’ directories, so running `ls students` will not work. Instead, navigate directly to your own directory using `cd`.
 
 There is an upper limit of 50MB on the disk space that you can use. Remote (ssh) users are also limited to 2GB of RAM.
 
